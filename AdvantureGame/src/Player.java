@@ -8,13 +8,31 @@ public class Player {
     private String name;
     private String charName;
     private Scanner input = new Scanner(System.in);
+    private Inventory inventory;
 
     public Player(String name){
         this.name=name;
+        this.inventory = new Inventory();
+    }
+
+    public void printInfo(){
+        System.out.println(
+            "Silahiniz : " + this.getInventory().getWeapon().getName() +
+            ", Hasariniz : " + this.getDamage() +
+            ", Sagliginiz : " + this.getHealth() +
+            ", Paraniz : " + this.getMoney());
+    }
+
+    public Inventory getInventory(){
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory){
+        this.inventory = inventory;
     }
 
     public int getDamage(){
-        return damage;
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public void setDamage(int damage){
@@ -95,6 +113,4 @@ public class Player {
         this.setHealth(gameChar.getHealth());
         this.setMoney(gameChar.getMoney());
     }
-
-
 }

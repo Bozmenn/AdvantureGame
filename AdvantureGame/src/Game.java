@@ -13,5 +13,29 @@ public class Game {
         System.out.println("Burada yasananlarin hepsi gerçek !");
         System.out.println("Lütfen bir karakter seciniz !");
         player.selectChar();
+        Location location = null;
+        while(true){
+            player.printInfo();
+            System.out.println("########### Bolgeler ###########\n");
+            System.out.println("1 - Guvenli Ev --> Burasi sizin için guvenli bir evdir, dusman yok ! ");
+            System.out.println("2 - Magaza --> Siah veya Zirh Satin alabilirsiniz !");
+            System.out.println("Lutfen gitmek istediginiz bolgeyi seciniz ! ");
+            int selectLoc = input.nextInt();
+            switch(selectLoc) {
+                case 1:
+                    location = new SafeHouse(player);
+                    break;
+                case 2:
+                    location = new ToolStore(player);
+                    break;
+                default :
+                    location = new SafeHouse(player);
+            }
+
+            if(!location.onLocation()) {
+                System.out.println("GAME OVER");
+                break;
+            }
+        }   
     }
 }
