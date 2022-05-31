@@ -9,16 +9,28 @@ public class Player {
     private String charName;
     private Scanner input = new Scanner(System.in);
     private Inventory inventory;
+    private int orgHealth;
 
     public Player(String name){
         this.name=name;
         this.inventory = new Inventory();
     }
 
+    public int getOrgHealth() {
+        return orgHealth;
+    }
+
+    public void setOrgHealth(int orgHealth) {
+        this.orgHealth = orgHealth;
+    }
+
     public void printInfo(){
+        System.out.println();
         System.out.println(
             "Silahiniz : " + this.getInventory().getWeapon().getName() +
-            ", Hasariniz : " + this.getDamage() +
+            ", Zirh : " + this.getInventory().getArmor().getName() +
+            ", Bloklama : " + this.getInventory().getArmor().getBlock() + 
+            ", Hasariniz : " + this.getTotalDamage() +
             ", Sagliginiz : " + this.getHealth() +
             ", Paraniz : " + this.getMoney());
     }
@@ -31,8 +43,12 @@ public class Player {
         this.inventory = inventory;
     }
 
-    public int getDamage(){
+    public int getTotalDamage(){
         return damage + this.getInventory().getWeapon().getDamage();
+    }
+
+    public int getDamage(){
+        return damage;
     }
 
     public void setDamage(int damage){
@@ -86,7 +102,7 @@ public class Player {
         }
 
         System.out.println("----------------------------------------------");
-        System.out.println("Lutfen bir karakter seciniz !");
+        System.out.println("Lutfen bir karakter seciniz :");
         int selectChar = input.nextInt();
         switch (selectChar) {
             case 1:
@@ -111,6 +127,7 @@ public class Player {
         this.setCharName(gameChar.getName());
         this.setDamage(gameChar.getDamage());
         this.setHealth(gameChar.getHealth());
+        this.setOrgHealth(gameChar.getHealth());
         this.setMoney(gameChar.getMoney());
     }
 }
