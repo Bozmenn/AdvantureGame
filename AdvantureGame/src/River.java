@@ -1,7 +1,7 @@
 public class River extends BattleLocation {
 
     public River(Player player) {
-        super(player, "Nehir", new Bear(), "Water", 2);
+        super(player, "Nehir", new Bear(), new Item("Su"), 2);
     }
     
 }

@@ -130,4 +130,6 @@ public class Player {
         this.setOrgHealth(gameChar.getHealth());
         this.setMoney(gameChar.getMoney());
     }
+
+
 }
